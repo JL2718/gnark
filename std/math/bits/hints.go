@@ -11,6 +11,7 @@ func GetHints() []solver.Hint {
 	return []solver.Hint{
 		ithBit,
 		nBits,
+		nFakeBits,
 		nTrits,
 		nNaf,
 	}
@@ -40,6 +41,14 @@ func nBits(_ *big.Int, inputs []*big.Int, results []*big.Int) error {
 	n := inputs[0]
 	for i := 0; i < len(results); i++ {
 		results[i].SetUint64(uint64(n.Bit(i)))
+	}
+	return nil
+}
+func nFakeBits(_ *big.Int, inputs []*big.Int, results []*big.Int) error {
+	n := inputs[0]
+	results[0].Set(n)
+	for i := 1; i < len(results); i++ {
+		results[i].SetUint64(0)
 	}
 	return nil
 }

@@ -130,7 +130,7 @@ type API interface {
 	// it is more efficient to use the bounded methdods in package
 	// [github.com/consensys/gnark/std/math/bits].
 	AssertIsLessOrEqual(v Variable, bound Variable)
-
+	FakeMustBeLessOrEqVar(v Variable, bound Variable)
 	// Println behaves like fmt.Println but accepts cd.Variable as parameter
 	// whose value will be resolved at runtime when computed by the solver
 	Println(a ...Variable)
